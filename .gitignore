@@ -26,3 +26,4 @@ midonet/publish
 release-notes/tmp
 release-notes/publish
 *.pyc
+.idea
