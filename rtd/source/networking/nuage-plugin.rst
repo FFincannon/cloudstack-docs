@@ -43,14 +43,22 @@ the Nuage-VSP Plugin.
 +----------------------+----------------------+
 | Network Service      | CloudStack version   |
 +======================+======================+
-| Virtual Networking   | >= 4.0               |
+| Virtual Networking   | >= 4.5               |
 +----------------------+----------------------+
-| Static NAT           | >= 4.3               |
+| VPC                  | >= 4.5               |
 +----------------------+----------------------+
-| Port Forwarding      | >= 4.3               |
+| Source NAT           | >= 4.7               |
 +----------------------+----------------------+
-| Load Balancing       | >= 4.3               |
+| Static NAT           | >= 4.7               |
 +----------------------+----------------------+
+| Firewall             | >= 4.7               |
++----------------------+----------------------+
+| Network ACL          | >= 4.7               |
++----------------------+----------------------+
+| User Data (*)        | >= 4.7               |
++----------------------+----------------------+
+
+(*) Through the use of VR Provider
 
 Table: Supported Services
 
@@ -58,26 +66,30 @@ Table: Supported Services
    The Virtual Networking service was originally called 'Connectivity'
    in CloudStack 4.0
 
-The following hypervisors are supported by the OVS Plugin.
+The following hypervisors are supported by the Nuage-VSP Plugin.
 
 .. cssclass:: table-striped table-bordered table-hover
 
 +--------------+----------------------+
 | Hypervisor   | CloudStack version   |
 +==============+======================+
-| XenServer    | >= 4.0               |
+| XenServer    | >= 4.5               |
 +--------------+----------------------+
-| KVM          | >= 4.3               |
+| VmWare ESXi  | >= 4.5               |
++--------------+----------------------+
+| KVM          | >= 4.7               |
 +--------------+----------------------+
 
 Table: Supported Hypervisors
 
 
-Configuring the OVS Plugin
---------------------------
+Configuring the Nuage-VSP Plugin
+--------------------------------
 
 Prerequisites
 ~~~~~~~~~~~~~
+
+[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
 
 Before enabling the OVS plugin the hypervisor needs to be install OpenvSwitch. 
 Default, XenServer has already installed OpenvSwitch. However, you must 
@@ -97,6 +109,8 @@ KVM hypervisor:
 
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
+
+[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
 
 CloudStack needs to have at least one physical network with the isolation
 method set to “GRE”. This network should be enabled for the Guest
@@ -120,6 +134,8 @@ traffic type.
 
 Agent Configuration
 ~~~~~~~~~~~~~~~~~~~
+
+[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
 
 .. note::
    Only for KVM hypervisor
@@ -183,6 +199,8 @@ Agent Configuration
 Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
+
 The OVS provider is disabled by default. Navigate to the "Network
 Service Providers" configuration of the physical network with the GRE
 isolation type. Navigate to the OVS provider and press the
@@ -195,6 +213,8 @@ isolation type. Navigate to the OVS provider and press the
 
 Network Offerings
 ~~~~~~~~~~~~~~~~~
+
+[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
 
 Using the OVS plugin requires a network offering with Virtual
 Networking enabled and configured to use the OVS element. Typical
@@ -267,14 +287,15 @@ required to provide network services like dns and dhcp.
 Table: Isolated network offering with network services
 
 
-Using the OVS plugin with VPC
------------------------------
 
-OVS plugin does not work with VPC at that time
+Dedicated features that come with Nuage-VSP Plugin
+--------------------------------------------------
+
+Need to talk here about Domain Template Feature
+
 
 
 Revision History
 ----------------
 
-0-0 Mon Dec 2 2013 Nguyen Anh Tu tuna@apache.org Documentation
-created for 4.3.0 version of the OVS Plugin
+<add>
