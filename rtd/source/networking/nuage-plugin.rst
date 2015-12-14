@@ -24,9 +24,11 @@ The Nuage-VSP plugin is the Nuage Networks SDN
 implementation in CloudStack, which integrates with the latest 3.2 Release of the
 Nuage Networks Virtualized Services Platform.
 The plugin can be used by CloudStack to implement
+
 * Isolated Guest networks
 * Virtual Private Clouds (VPC)
 * Shared Networks
+
 and leverage the scalability and feature-richness of Advanced SDN.
 
 
