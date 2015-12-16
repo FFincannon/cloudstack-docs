@@ -91,22 +91,17 @@ Configuring the Nuage-VSP Plugin
 Prerequisites
 ~~~~~~~~~~~~~
 
-[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
+Before building and using the Nuage plugin for ACS 4.7, verify that the platform you intend to use is supported.
 
-Before enabling the OVS plugin the hypervisor needs to be install OpenvSwitch. 
-Default, XenServer has already installed OpenvSwitch. However, you must 
-install OpenvSwitch manually on KVM. CentOS 6.4 and OpenvSwitch 1.10 are 
-recommended.
+.. Note:: Only the release notes for Nuage VSP contain the most up-to-date information on supported versions. Please check them to verify that the information below is actually correct.
 
-KVM hypervisor:
+Supported Versions
+------------------
 
--  CentOS 6.4 is recommended.
-
--  To make sure that the native bridge module will not interfere with 
-   openvSwitch the bridge module should be added to the blacklist. See the 
-   modprobe documentation for your distribution on where to find the blacklist. 
-   Make sure the module is not loaded either by rebooting or executing rmmod 
-   bridge before executing next steps.
+* Nuage VSP 3.2.R2
+* Apache CloudStack 4.7
+* Citrix XenServer 6.2
+* KVM on Enterprise Linux 7.x
 
 
 Zone Configuration
