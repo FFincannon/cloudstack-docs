@@ -96,7 +96,7 @@ Before building and using the Nuage plugin for ACS 4.7, verify that the platform
 .. Note:: Only the release notes for Nuage VSP contain the most up-to-date information on supported versions. Please check them to verify that the information below is actually correct.
 
 Supported Versions
-------------------
+~~~~~~~~~~~~~~~~~~
 
 * Nuage VSP 3.2.R2
 * Apache CloudStack 4.7
@@ -107,27 +107,25 @@ Supported Versions
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
 
-[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
+Select VSP Isolation Method During Zone Creation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-CloudStack needs to have at least one physical network with the isolation
-method set to “GRE”. This network should be enabled for the Guest
-traffic type.
+The Nuage VSP solution is NOT supported in Basic zone provisioning mode. 
 
-.. note::
-   With KVM, the traffic type should be configured with the traffic label
-   that matches the name of the Integration Bridge on the hypervisor. For 
-   example, you should set the traffic label as following:
-
-   -  Management & Storage traffic: cloudbr0
-
-   -  Guest & Public traffic: cloudbr1
-      See KVM networking configuration guide for more detail.
+1. When adding a zone, the ACS administrator should select **Advanced** mode in the zone wizard. 
+2. When laying out the physical network configuration during zone provisioning, the **Guest** network traffic should be put in a separate physical network of its own.
+3. This physical network carrying the **Guest** traffic should have **VSP** as the **Isolation Method**, as shown in the figure captioned "Setting Isolation Method to VSP during Zone Creation" below.
 
 
-.. figure:: /_static/images/ovs-physical-network-gre.png
-   :align: center
-   :alt: a screenshot of a physical network with the GRE isolation type
+Update Traffic Labels
+~~~~~~~~~~~~~~~~~~~~~
 
+**Guest Traffic Type**
+
+Select **Edit** on the **Guest** traffic type panel and update the Traffic Label:
+
+-  For XenServer use **nuageManagedNetwork** as the **XenServer Traffic Label**.
+-  For KVM use **alubr0** as the **KVM Traffic Label**, as shown in the screenshot captioned "Specifying the Traffic Type in KVM."
 
 Agent Configuration
 ~~~~~~~~~~~~~~~~~~~
