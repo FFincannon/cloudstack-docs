@@ -192,8 +192,27 @@ Create and Enable VPC Network Offering
 
 Dedicated features that come with Nuage-VSP Plugin
 --------------------------------------------------
+Domain Template Support for CloudStack in VSP
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Overview
+~~~~~~~~
 
-Need to talk here about Domain Template Feature
+VSP's CloudStack plugin can be configured to use a VSD template when instantiating domains. The parameters and abstractions contained in the template are reused every time a new domain instance is created in CloudStack, and thus all the constructs defined in the template are available to the domain. 
+
+Configuration
+~~~~~~~~~~~~~
+
+Details of the global variables that have been added to support domain templates are listed below: 
+
+:nuagevsp.isolatedntwk.domaintemplate.name: (Type: string) Name of the template to use for creation of domains for isolated networks
+
+:nuagevsp.vpc.domaintemplate.name: (Type: boolean) Name of the template to use for creation of domains for VPC
+
+To configure a domain template for use by CloudStack, use VSD to create a domain template, using the global CloudStack parameters listed above.
+
+.. Note:: There will be only a single domain instance for ``nuagevsp.vpc.domaintemplate.name``.
+
+Networks created in CloudStack will then use domain instances created from the template to which the name points.
 
 
 
