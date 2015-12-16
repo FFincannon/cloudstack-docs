@@ -103,6 +103,10 @@ Supported Versions
 * Citrix XenServer 6.2
 * KVM on Enterprise Linux 7.x
 
+Required VSD Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When configuring Nuage VSP as the network service provider, Nuage VSD must be added as a CSP user, and this user must be added to the CMS group. See `Enabling the service provider <nuage-plugin.html#enabling-the-service-provider>`_.
 
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
