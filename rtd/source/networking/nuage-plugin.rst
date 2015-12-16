@@ -114,7 +114,7 @@ The Nuage VSP solution is NOT supported in Basic zone provisioning mode.
 
 1. When adding a zone, the ACS administrator should select **Advanced** mode in the zone wizard. 
 2. When laying out the physical network configuration during zone provisioning, the **Guest** network traffic should be put in a separate physical network of its own.
-3. This physical network carrying the **Guest** traffic should have **VSP** as the **Isolation Method**, as shown in the figure captioned "Setting Isolation Method to VSP during Zone Creation" below.
+3. This physical network carrying the **Guest** traffic should have **VSP** as the **Isolation Method**.
 
 
 Update Traffic Labels
@@ -126,70 +126,6 @@ Select **Edit** on the **Guest** traffic type panel and update the Traffic Label
 
 -  For XenServer use **nuageManagedNetwork** as the **XenServer Traffic Label**.
 -  For KVM use **alubr0** as the **KVM Traffic Label**, as shown in the screenshot captioned "Specifying the Traffic Type in KVM."
-
-Agent Configuration
-~~~~~~~~~~~~~~~~~~~
-
-[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
-
-.. note::
-   Only for KVM hypervisor
-
--  Configure network interfaces:
-
-   ::
-      
-      /etc/sysconfig/network-scripts/ifcfg-eth0
-      DEVICE=eth0
-      BOOTPROTO=none
-      IPV6INIT=no
-      NM_CONTROLLED=no
-      ONBOOT=yes
-      TYPE=OVSPort
-      DEVICETYPE=ovs
-      OVS_BRIDGE=cloudbr0
-    
-      /etc/sysconfig/network-scripts/ifcfg-eth1
-      DEVICE=eth1
-      BOOTPROTO=none
-      IPV6INIT=no
-      NM_CONTROLLED=no
-      ONBOOT=yes
-      TYPE=OVSPort
-      DEVICETYPE=ovs
-      OVS_BRIDGE=cloudbr1
-    
-      /etc/sysconfig/network-scripts/ifcfg-cloudbr0
-      DEVICE=cloudbr0
-      ONBOOT=yes
-      DEVICETYPE=ovs
-      TYPE=OVSBridge
-      BOOTPROTO=static
-      IPADDR=172.16.10.10
-      GATEWAY=172.16.10.1
-      NETMASK=255.255.255.0
-      HOTPLUG=no
-    
-      /etc/sysconfig/network-scripts/ifcfg-cloudbr1
-      DEVICE=cloudbr1
-      ONBOOT=yes
-      DEVICETYPE=ovs
-      TYPE=OVSBridge
-      BOOTPROTO=none
-      HOTPLUG=no
-    
-      /etc/sysconfig/network
-      NETWORKING=yes
-      HOSTNAME=testkvm1
-      GATEWAY=172.10.10.1
-
--  Edit /etc/cloudstack/agent/agent.properties
-
-   ::
-      
-      network.bridge.type=openvswitch
-      libvirt.vif.driver=com.cloud.hypervisor.kvm.resource.OvsVifDriver
-
 
 Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
