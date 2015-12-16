@@ -106,7 +106,7 @@ Supported Versions
 Required VSD Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When configuring Nuage VSP as the network service provider, Nuage VSD must be added as a CSP user, and this user must be added to the CMS group. See `Enabling the service provider <nuage-plugin.html#enabling-the-service-provider>`_.
+When configuring Nuage VSP as the network service provider, Nuage VSD must be added as a CSP user, and this user must be added to the CMS group. See `Enabling the service provider`_.
 
 Zone Configuration
 ~~~~~~~~~~~~~~~~~~
