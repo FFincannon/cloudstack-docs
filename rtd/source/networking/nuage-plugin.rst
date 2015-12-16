@@ -153,79 +153,42 @@ Nuage VSP must be added as a Network Service provider to ACS before it can be us
 Network Offerings
 ~~~~~~~~~~~~~~~~~
 
-[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
+There are two types of Network Offerings that can be created:
 
-Using the OVS plugin requires a network offering with Virtual
-Networking enabled and configured to use the OVS element. Typical
-use cases combine services from the Virtual Router appliance and the
-OVS plugin.
+-  If Isolated Networks are required, then create a network offering for use with Isolated Networks.
+-  If VPC deployments are required, then create a new network offering for that.
 
-.. cssclass:: table-striped table-bordered table-hover
+Create and Enable Isolated Network Offering
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Select **Service Offerings > Select Offering: Network Offerings > Add network offering**.
 
-+----------------------+-----------------+
-| Service              | Provider        |
-+======================+=================+
-| VPN                  | VirtualRouter   |
-+----------------------+-----------------+
-| DHCP                 | VirtualRouter   |
-+----------------------+-----------------+
-| DNS                  | VirtualRouter   |
-+----------------------+-----------------+
-| Firewall             | VirtualRouter   |
-+----------------------+-----------------+
-| Load Balancer        | OVS             |
-+----------------------+-----------------+
-| User Data            | VirtualRouter   |
-+----------------------+-----------------+
-| Source NAT           | VirtualRouter   |
-+----------------------+-----------------+
-| Static NAT           | OVS             |
-+----------------------+-----------------+
-| Post Forwarding      | OVS             |
-+----------------------+-----------------+
-| Virtual Networking   | OVS             |
-+----------------------+-----------------+
+2. In the **Supported Services** field select each of the following services - DHCP, Firewall, Source NAT, Static NAT, Virtual Networking and select Nuage VSP as the Provider.
 
-Table: Isolated network offering with regular services from the Virtual
-Router.
+3. If User Data service is desired in an Isolated Network, choose **VirtualRouter** as the User Data provider. **Per Zone** MUST be selected for the Source NAT Type for the Source NAT service.
 
-.. figure:: /_static/images/ovs-network-offering.png
-   :align: center
-   :alt: a screenshot of a network offering.
+4. Click OK to create the offering. 
 
+5. After the offering has been successfully created, enable it from the Service Offerings list.
 
-.. note::
-   The tag in the network offering should be set to the name of the
-   physical network with the OVS provider.
+Create and Enable VPC Network Offering
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1. Select **Service Offerings > Select Offering**: **Network Offerings > Add network offering**.
 
-Isolated network with network services. The virtual router is still
-required to provide network services like dns and dhcp.
+2. Select the **VPC checkbox**. In the Supported Services field select each of the following services and then select Nuage VSP as the Provider.
 
-.. cssclass:: table-striped table-bordered table-hover
+   *	DHCP
+   *	Source NAT
+   *  Static NAT
+   *	Virtual Networking 
 
-+----------------------+-----------------+
-| Service              | Provider        |
-+======================+=================+
-| DHCP                 | VirtualRouter   |
-+----------------------+-----------------+
-| DNS                  | VirtualRouter   |
-+----------------------+-----------------+
-| User Data            | VirtualRouter   |
-+----------------------+-----------------+
-| Source NAT           | VirtualRouter   |
-+----------------------+-----------------+
-| Static NAT           | OVS             |
-+----------------------+-----------------+
-| Post Forwarding      | OVS             |
-+----------------------+-----------------+
-| Load Balancing       | OVS             |
-+----------------------+-----------------+
-| Virtual Networking   | OVS             |
-+----------------------+-----------------+
+3. (Optional) Select **VirtualRouter** as the UserData provider if password reset or metadata feature is desired.
 
-Table: Isolated network offering with network services
+4. (Optional) If network ACL is required, select **NuageVsp** as the network ACL provider. 
 
+   a) Ensure the *Persistent* checkbox is selected.
+   b) As the *Supported Source NAT Type*, select *Per Zone*.
 
+5.  After the offering has been successfully created, enable it from the Service Offerings list.
 
 Dedicated features that come with Nuage-VSP Plugin
 --------------------------------------------------
