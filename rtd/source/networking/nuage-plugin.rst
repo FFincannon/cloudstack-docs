@@ -130,17 +130,21 @@ Select **Edit** on the **Guest** traffic type panel and update the Traffic Label
 Enabling the service provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-[QA TO FURTHER EDIT THIS TEXT -- THIS TEXT IS JUST COPY FROM OVS]
+Nuage VSP must be added as a Network Service provider to ACS before it can be used. 
 
-The OVS provider is disabled by default. Navigate to the "Network
-Service Providers" configuration of the physical network with the GRE
-isolation type. Navigate to the OVS provider and press the
-"Enable Provider" button.
+:Step 1: Select **Infrastructure > Zone > [zone name] > Physical Network 2 > Configure Network Service Providers > Nuage Vsp > +**, which brings up the **Add Nuage Virtualized Services Directory (VSD)** panel. 
 
-.. figure:: /_static/images/ovs-physical-network-gre-enable.png
-   :align: center
-   :alt: a screenshot of an enabled OVS provider
+:Step 2: Enter the VSD **Host Name**, **Username** and **Password** that was previously created; see "Required VSD Configuration" in the Building the Nuage VSP CloudStack Plugin chapter of the current document. 
 
+:Step 3: Specify the VSD API version by entering the API version in the appropriate field (format: ``v3_2``).
+
+:Step 4: *EITHER* Add **Nuage VSD** and click the **OK** button,
+
+         *OR* use API calls to configure Nuage VSP as the Network Provider; see "Nuage VSD API" in the Appendix of the current document.
+
+:Step 5: Go to **Infrastructure > Zones > [zone name] > Physical Network 2 > Network Service Providers > Nuage Vsp > Devices > Details** tab as shown in the figure "Enabling Nuage VSP" below. This indicates the state of Nuage VSP. Enable Nuage VSP by clicking **Enable**.
+
+:Step 6: (Optional) View the Nuage VSP status on the list of Network Service Providers on the **Infrastructure > Zones > [zone name] > Physical Network 2 > Network Service Providers** page;
 
 Network Offerings
 ~~~~~~~~~~~~~~~~~
@@ -230,3 +234,30 @@ Revision History
 ----------------
 
 <add>
+
+Appendix
+--------
+Nuage VSD API
+~~~~~~~~~~~~~
+
+To add Nuage VSP as Network Service Provider, 
+
+1.  Add the specified network service provider:
+
+::
+
+        http://135.227.147.106:8080/client/api?command=addNetworkSer
+        viceProvider&name=NuageVsp&physicalnetworkid=87528ea5-0189-4
+        a02-92db-3d1539232e21&response=json&sessionkey=CaDCr2P1qpIqm
+        Fsr%2BmMl1T3nLzs%3D&_=1414200788068
+
+2.  Add the specified Nuage VSD:
+
+::
+
+    http://135.227.147.106:8080/client/api?command=addNuageVspDe
+    vice&physicalnetworkid=87528ea5-0189-4a02-92db-3d1539232e21&
+    hostname=135.227.210.196&username=cloudstackuser1&password=c
+    loudstackuser1&port=8443&apiversion=v3_2&retrycount=4&retryinter
+    val=60&response=json&sessionkey=CaDCr2P1qpIqmFsr%2BmMl1T3nLz
+    s%3D
